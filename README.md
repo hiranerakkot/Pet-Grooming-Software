@@ -1,1 +1,49 @@
-# Pet-Grooming-Software
+# Product: Pet-Grooming-Management-Software
+
+## Product Information
+Vendor Homepage: [link](https://www.sourcecodester.com/)
+
+Software Link: [link](https://www.sourcecodester.com/php/18340/pet-grooming-management-software-download.html)
+
+Affected Version: [<= v1.0]
+
+BUG Author: Hiran
+
+## Title
+Broken Access Control Allowing Unauthorized User Account Creation
+
+## Severity
+High
+
+## Security Classification
+- Broken Access Control
+- Improper Authorization
+- Business Logic Vulnerability
+## Summary
+
+The application does not enforce proper server-side role validation on the add_user.php endpoint.
+A low-privileged authenticated user can directly access the user creation page and successfully create new standard user accounts. The system fails to verify whether the authenticated session has administrative privileges before processing the request.
+Although administrator accounts cannot be created, unauthorized user creation is still permitted.
+
+## Impact
+- Unauthorized creation of user accounts
+- Integrity compromise of user management system
+- Potential account spamming or misuse
+- Violation of least-privilege principle
+
+## Steps to Reproduce
+
+1. Login using normal user credentials.
+
+2. Manually navigate to:
+
+`/add_user.php`
+
+3. Fill in required fields.
+
+4. Submit the form.
+
+5. Observe that a new user account is successfully created.
+
+## Proof of Concept
+
